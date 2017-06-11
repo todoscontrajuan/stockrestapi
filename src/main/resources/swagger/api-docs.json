@@ -1,0 +1,152 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "General stock system",
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "host": "petstore.swagger.io",
+  "basePath": "/v1",
+  "schemes": [
+    "http"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/productTypes": {
+      "get": {
+        "summary": "List all product types",
+        "operationId": "listProductTypes",
+        "tags": [
+          "productTypes"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "How many items to return at one time (max 100)",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An paged array of productTypes",
+            "headers": {
+              "x-next": {
+                "type": "string",
+                "description": "A link to the next page of responses"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/ProductTypes"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a productType",
+        "operationId": "createProductTypes",
+        "tags": [
+          "productTypes"
+        ],
+        "responses": {
+          "201": {
+            "description": "Null response"
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/productTypes/{productTypeId}": {
+      "get": {
+        "summary": "Info for a specific product type",
+        "operationId": "showProductTypeById",
+        "tags": [
+          "productTypes"
+        ],
+        "parameters": [
+          {
+            "name": "productTypeId",
+            "in": "path",
+            "required": true,
+            "description": "The id of the product type to retrieve",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Expected response to a valid request",
+            "schema": {
+              "$ref": "#/definitions/ProductTypes"
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "ProductType": {
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "ProductTypes": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/ProductType"
+      }
+    },
+    "Error": {
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
