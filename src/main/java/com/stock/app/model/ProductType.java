@@ -5,5 +5,26 @@ package com.stock.app.model;
  */
 public class ProductType {
     
+    private int idProductType;
+    private String productTypeName;
+
+    public int getIdProductType() {
+        return idProductType;
+    }
+
+    public void setIdProductType(int idProductType) {
+        this.idProductType = idProductType;
+    }
+
+    public String getProductTypeName() {
+        return productTypeName;
+    }
+
+    public void setProductTypeName(String productTypeName) {
+        this.productTypeName = productTypeName;
+    }
+    
+    
+    
     
 }
