@@ -17,8 +17,9 @@ public class Product {
     private String productOrigin;
     private int stock;
     
-    
+    @NotNull
     private ProductType productType;
+    
     private int id;
 
     public int getId() {
