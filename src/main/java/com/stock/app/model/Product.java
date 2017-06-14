@@ -1,14 +1,24 @@
 package com.stock.app.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * Created by juan_ on 12/06/2017.
  */
 public class Product {
     private int productCode;
+    
+    @NotNull
+    @Size(min = 5, max = 20, message = "The length of name must be between 5 to 20")
     private String productName;
+    
+    @NotNull
     private String productOrigin;
     private int stock;
-    private ProctType productType;
+    
+    
+    private ProductType productType;
     private int id;
 
     public int getId() {
@@ -51,11 +61,11 @@ public class Product {
         this.stock = stock;
     }
 
-    public ProctType getProductType() {
+    public ProductType getProductType() {
         return productType;
     }
 
-    public void setProductType(ProctType productType) {
+    public void setProductType(ProductType productType) {
         this.productType = productType;
     }
 }
