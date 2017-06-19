@@ -1,5 +1,6 @@
 package com.stock.app.model;
 
+import java.util.ArrayList;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -7,6 +8,9 @@ import javax.validation.constraints.Size;
  * Created by juan_ on 12/06/2017.
  */
 public class Product {
+    
+    private int id;
+    
     private int productCode;
     
     @NotNull
@@ -20,7 +24,8 @@ public class Product {
     @NotNull
     private ProductType productType;
     
-    private int id;
+    @NotNull
+    private ArrayList<Historical> historical;    
 
     public int getId() {
         return id;
@@ -69,4 +74,12 @@ public class Product {
     public void setProductType(ProductType productType) {
         this.productType = productType;
     }
+
+    public ArrayList<Historical> getHistorical() {
+        return historical;
+    }
+
+    public void setHistorical(ArrayList<Historical> historical) {
+        this.historical = historical;
+    }    
 }

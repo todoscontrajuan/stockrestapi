@@ -5,7 +5,6 @@
  */
 package com.stock.app.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -16,12 +15,33 @@ public class Historical {
     
     private int id;
     
-    private Estate estate;
+    private State state;
     
-    private ArrayList<Product> products;
+    private Date dateChanged;
     
-    private Date fechaInicioEstado;
-    
-    private Date fechaDesdeEstado;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public void setState(State state) {
+        this.state = state;
+    }
+
+    public Date getDateChanged() {
+        return dateChanged;
+    }
+
+    public void setDateChanged(Date dateChanged) {
+        this.dateChanged = dateChanged;
+    }
     
 }
