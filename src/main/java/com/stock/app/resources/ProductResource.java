@@ -1,7 +1,6 @@
 package com.stock.app.resources;
 
 import com.stock.app.model.Product;
-import com.stock.app.model.User;
 import com.stock.app.services.ProductServiceImpl;
 
 import javax.ws.rs.*;

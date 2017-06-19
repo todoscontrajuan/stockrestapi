@@ -14,7 +14,7 @@ public class Product {
     private int productCode;
     
     @NotNull
-    @Size(min = 5, max = 20, message = "The length of name must be between 5 to 20")
+    @Size(min = 5, max = 20, message = "The length of name must be between 5 and 20 characters")
     private String productName;
     
     @NotNull
@@ -25,8 +25,8 @@ public class Product {
     private ProductType productType;
     
     @NotNull
-    private ArrayList<Historical> historical;    
-
+    private ArrayList<Historical> historical;
+    
     public int getId() {
         return id;
     }
