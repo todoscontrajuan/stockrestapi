@@ -10,10 +10,5 @@ package com.stock.app.model;
  * @author ramiro
  */
 public enum State {
-    
-    AVAILABLE,
-    UNAVAILABLE;
-    
-    private State() {
-    }
+    AVAILABLE, UNAVAILABLE
 }

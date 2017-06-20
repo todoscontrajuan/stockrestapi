@@ -18,7 +18,6 @@ public class Historical {
     private State state;
     
     private Date dateChanged;
-    
 
     public int getId() {
         return id;

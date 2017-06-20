@@ -12,8 +12,10 @@ import java.util.Date;
 public interface ProductService {
 
     ArrayList<Product> getProducts();
+    Product getProduct(int id);
     Integer createProduct(Product product);
-    
-    ArrayList<State> getStateOfProductByDate(int id, Date startDate, Date endDate);
+    void updateProduct(Product product, Integer id);
+    void deleteProduct(Integer id);
+    ArrayList<State> getStatesOfProductByDate(int id, Date startDate, Date endDate);
     
 }

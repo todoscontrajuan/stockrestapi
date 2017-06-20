@@ -21,6 +21,18 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
+    public Product getProduct(int id) {
+        boolean flag = true;
+        int i = 0;
+        Product p = new Product();
+        while (flag) {
+            p = products.get(i);
+            if (p.getId() == id) flag = false;
+        }
+        return p;
+    }
+
+    @Override
     public Integer createProduct(Product product) {
         product.setId(++ID);
         products.add(product);
@@ -28,15 +40,32 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ArrayList<State> getStateOfProductByDate(int id, Date startDate, Date endDate) {
-      
+    public void updateProduct(Product product, Integer id) {
+        deleteProduct(id);
+        products.add(product);
+    }
+
+    @Override
+    public void deleteProduct(Integer id) {
+        boolean flag = true;
+        int i = 0;
+        Product p;
+        while (flag) {
+            p = products.get(i);
+            if (p.getId() == id) {
+                flag = false;
+                products.remove(i);
+            }
+        }
+    }
+
+    @Override
+    public ArrayList<State> getStatesOfProductByDate(int id, Date startDate, Date endDate) {
         ArrayList<State> states = new ArrayList<> ();
-        //TO DO USED THE PRODUCT'S ID
-        Product p = new Product();
-        
+        Product p = getProduct(id);
         ArrayList<Historical> historical = p.getHistorical();
         for(int i=0; i<=historical.size()-1; i++){            
-            Date dateChanged = historical.get(i).getDateChanged();                
+            Date dateChanged = historical.get(i).getDateChanged();
             if(dateChanged.after(startDate) && dateChanged.before(endDate)){
                 states.add(historical.get(i).getState());
             }

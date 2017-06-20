@@ -10,20 +10,15 @@ import javax.validation.constraints.Size;
 public class Product {
     
     private int id;
-    
     private int productCode;
-    
+    private int stock;
     @NotNull
     @Size(min = 5, max = 20, message = "The length of name must be between 5 and 20 characters")
     private String productName;
-    
     @NotNull
     private String productOrigin;
-    private int stock;
-    
     @NotNull
     private ProductType productType;
-    
     @NotNull
     private ArrayList<Historical> historical;
     
