@@ -60,14 +60,16 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ArrayList<State> getStatesOfProductByDate(int id, Date startDate, Date endDate) {
+    public ArrayList<State> getStatesOfProductByDate(int id, String state, Date startDate, Date endDate) {
         ArrayList<State> states = new ArrayList<> ();
         Product p = getProduct(id);
         ArrayList<Historical> historical = p.getHistorical();
-        for(int i=0; i<=historical.size()-1; i++){            
+        for(int i=0; i<historical.size(); i++){
             Date dateChanged = historical.get(i).getDateChanged();
             if(dateChanged.after(startDate) && dateChanged.before(endDate)){
-                states.add(historical.get(i).getState());
+                if(state.equalsIgnoreCase(historical.get(i).getState().toString())) {
+                    states.add(historical.get(i).getState());
+                }
             }
         }
         return states;

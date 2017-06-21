@@ -16,6 +16,6 @@ public interface ProductService {
     Integer createProduct(Product product);
     void updateProduct(Product product, Integer id);
     void deleteProduct(Integer id);
-    ArrayList<State> getStatesOfProductByDate(int id, Date startDate, Date endDate);
+    ArrayList<State> getStatesOfProductByDate(int id, String state, Date startDate, Date endDate);
     
 }

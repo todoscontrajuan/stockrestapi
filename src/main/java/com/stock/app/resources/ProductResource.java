@@ -75,14 +75,16 @@ public class ProductResource {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/{id}/{state}")
     public Response getProductStatesByDate (
             @PathParam("id") Integer id,
-            @QueryParam("startDate") Date startDate,
-            @QueryParam("endDate") Date endDate) {
+            @PathParam("state") String state,
+            @QueryParam("startDate") int startDate,
+            @QueryParam("endDate") int endDate) {
                 try{
-                    service.getStatesOfProductByDate(id, startDate, endDate);
-                    return Response.noContent().build();
+                    Date startDate1 = new Date(startDate);
+                    Date endDate1 = new Date(endDate);
+                    return Response.ok().entity(service.getStatesOfProductByDate(id, state, startDate1, endDate1)).build();
                 }catch (NotFoundException e){
                     return Response.status(Response.Status.NOT_FOUND).entity(e.getMessage()).build();
                 }catch (Exception e){
