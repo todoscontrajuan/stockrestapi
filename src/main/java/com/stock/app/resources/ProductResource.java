@@ -48,7 +48,7 @@ public class ProductResource {
 
     @PUT
     @Path("/{id}")
-    public Response updateProduct(Product product, @PathParam("id") Integer id) {
+    public Response updateProduct(@Valid Product product, @PathParam("id") Integer id) {
         try {
             service.updateProduct(product, id);
             return Response.noContent().build();
